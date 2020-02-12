@@ -1,1 +1,141 @@
-Hello
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Coronavirus live map</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="odometer.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="odometer-theme-default.css">
+    <link rel="icon" href="https://f0.pngfuel.com/png/1002/13/computer-icons-coronavirus-computer-font-font-corona-png-clip-art.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('https://thumbs.gfycat.com/MeatyInformalAttwatersprairiechicken-size_restricted.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        #mapa{
+            position: relative;
+            left: 25%;
+            top: 30%;
+            height: 50%;
+            width: 50%;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Float four columns side by side */
+        .column {
+          position: relative;
+          left: 40%;
+          padding-inline: 10px;
+          width: 10%;
+        }
+        
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+          .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+        
+        /* Style the counter cards */
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          text-align: center;
+          background-color: #444;
+          color: white;
+        }
+        
+        .fa {font-size:50px;}
+        a{
+            color: black;
+        }
+        h1{
+            color: #DC281E;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Coronavirus live map</h1><br>
+    <div class="d-flex flex-row">
+        <div class="column">
+          <div class="card">
+            <p>Total Cases:</p>
+            <h3 id="num_cases" class="odometer">0</h3>
+            <p>😷</p>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <p>Total Deaths:</p>
+            <h3 id="num_deaths" class="odometer">0</h3>
+            <p>💀</p>
+          </div>
+        </div>
+      </div> 
+    <br>
+    <div id="mapa"></div><br>
+    <a href="https://en.wikipedia.org/wiki/Coronavirus" target="_blank"><u>What is coronavirus?</u></a>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      let num_cases = 100;
+      let num_deaths = 100;
+      setInterval(function(){
+        num_cases += 1;
+        num_deaths += 1;
+        $('#num_cases').html(num_cases);
+        $('#num_deaths').html(num_deaths);
+      }, 5000);
+
+
+
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Confirmed Cases'],
+          ['Germany', 200],
+          ['United States', 300],
+          ['Brazil', 700],
+          ['Canada', 500],
+          ['France', 600],
+          ['RU', 700]
+        ]);
+
+        var options = {
+            colorAxis: {colors: ['white', '#DC281E']},
+            backgroundColor: '#81d4fa',
+
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('mapa'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    
+</body>
+</html>
