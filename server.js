@@ -1,27 +1,42 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const fs = require('fs');
+const path = require('path');
 const target = "https://www.worldometers.info/coronavirus/#countries";
-let date_ob = new Date();
-let date = ("0" + date_ob.getDate()).slice(-2);
-let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-let year = date_ob.getFullYear();
-let hours = date_ob.getHours();
-let minutes = date_ob.getMinutes();
-let seconds = date_ob.getSeconds();
-let time = year + "-" + month + "-" + date + "|" + hours + ":" + minutes + ":" + seconds + ".txt";
+
 
 process.stdout.write("Downloading coronavirus status...\n");
+fs.readdir("output", (err, files) => {
+    if (err) throw err;
+    //limpar arquivos do diretorio
+    for (const file of files) {
+      fs.unlink(path.join("output", file), err => {
+        if (err) throw err;
+      });
+    }
+});
 request(target, function(err, res, body){
     if (err) console.log("Ocorreu um erro " + err);
     var $ = cheerio.load(body);
-    $("tr td").each(function(i, elm) {
-        var resultado = $(this).html().trim() + '\n';
-        // 7 columns each country
-        // 1 -> country name
-        // 2 -> total cases
-        fs.appendFileSync("output/" + time, resultado);
-
-    });
+    function GetResults(){
+        console.log("Writing counter...");
+        $(".maincounter-number span").each(function(i, elm) {
+            let resultado = $(this).html().trim() + '\n';
+            // 3 numbers
+            // 1 -> total cases
+            // 2 -> total deaths
+            fs.appendFileSync("output/" + "result.txt", resultado);
+        });
+        console.log("Writing country results...")
+        $("tr td").each(function(i, elm) {
+            let resultado = $(this).html().trim() + '\n';
+            // 7 columns each country
+            // 1 -> country name
+            // 2 -> total cases
+            fs.appendFileSync("output/" + "result.txt", resultado);
+        });
+    }
+    GetResults();
+    
 });
 
