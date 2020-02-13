@@ -11,7 +11,7 @@
     <script src="odometer.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="odometer-theme-default.css">
-    <link rel="icon" href="https://f0.pngfuel.com/png/1002/13/computer-icons-coronavirus-computer-font-font-corona-png-clip-art.png">
+    <link rel="icon" href="https://www.iconpacks.net/icons/2/free-corona-virus-icon-3133-thumb.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
@@ -93,16 +93,12 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-
-      let num_cases = 100;
-      let num_deaths = 100;
       setInterval(function(){
-        num_cases += 1;
-        num_deaths += 1;
-        $('#num_cases').html(num_cases);
-        $('#num_deaths').html(num_deaths);
+        $.get('test.txt', function(data) {
+            $('#num_cases').html(data);
+        });
       }, 5000);
-
+      
 
 
       google.charts.load('current', {

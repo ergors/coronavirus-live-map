@@ -1,0 +1,28 @@
+{
+  "name": "coronavirusmap.github.io",
+  "version": "1.0.0",
+  "description": "Live map of coronavirus confirmed cases",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ergoproxyDNS/coronavirusmap.github.io.git"
+  },
+  "keywords": [
+    "coronavirus",
+    "live",
+    "map"
+  ],
+  "author": "Ergo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ergoproxyDNS/coronavirusmap.github.io/issues"
+  },
+  "homepage": "https://github.com/ergoproxyDNS/coronavirusmap.github.io#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2"
+  }
+}
