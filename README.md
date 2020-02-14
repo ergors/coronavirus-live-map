@@ -1,6 +1,6 @@
 # Coronavirus live map
 
-![preview](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+![preview](https://raw.githubusercontent.com/ergoproxyDNS/coronavirus-live-map/master/preview.png)
 
 A simple map chart for coronavirus cases and deaths.<br>
 For this applications I used geocharts from google and simple crawling with nodejs.<br>
