@@ -25,7 +25,7 @@ request(target, function(err, res, body){
             // 3 numbers
             // 1 -> total cases
             // 2 -> total deaths
-            fs.appendFileSync("output/" + "result.txt", resultado);
+            fs.appendFileSync("output/result.txt", resultado);
         });
         console.log("Writing country results...")
         $("tr td").each(function(i, elm) {
@@ -33,7 +33,7 @@ request(target, function(err, res, body){
             // 7 columns each country
             // 1 -> country name
             // 2 -> total cases
-            fs.appendFileSync("output/" + "result.txt", resultado);
+            fs.appendFileSync("output/result.txt", resultado);
         });
     }
     GetResults();

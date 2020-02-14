@@ -19,7 +19,7 @@ Japan
 Asia
 Singapore
 58
-+8
++11
 
 
 15
@@ -27,7 +27,7 @@ Singapore
 Asia
 Hong Kong
 53
-+3
++4
 1
 
 1
@@ -65,14 +65,6 @@ Taiwan
 1
 
 Asia
-Germany
-16
-
-
-
-1
-
-Europe
 Vietnam
 16
 +1
@@ -81,14 +73,14 @@ Vietnam
 7
 
 Asia
-USA
-15
-+2
+Germany
+16
 
 
-3
 
-N.America
+1
+
+Europe
 Australia
 15
 
@@ -97,6 +89,14 @@ Australia
 8
 
 Oceania
+USA
+15
++2
+
+
+3
+
+N.America
 France
 11
 
@@ -115,7 +115,7 @@ Macao
 Asia
 U.K.
 9
-
++1
 
 
 1
@@ -177,6 +177,22 @@ Spain
 
 
 Europe
+Nepal
+1
+
+
+
+1
+
+Asia
+Sri Lanka
+1
+
+
+
+1
+
+Asia
 Finland
 1
 
@@ -209,19 +225,3 @@ Sweden
 
 
 Europe
-Nepal
-1
-
-
-
-1
-
-Asia
-Sri Lanka
-1
-
-
-
-1
-
-Asia

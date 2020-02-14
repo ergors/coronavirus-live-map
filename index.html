@@ -93,43 +93,50 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      setInterval(function(){
-        $.get('test.txt', function(data) {
-            $('#num_cases').html(data);
+    var totalcases;
+    var country;
+    
+    google.charts.load('current', {
+      'packages':['geochart'],
+      // Note: you will need to get a mapsApiKey for your project.
+      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+      'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+    function drawRegionsMap() {
+        $.get('output/result.txt', function(data) {
+        //$('#num_cases').html(data);
+        //console.log(data);
+        linha = data.split("\n");
+        var casos = linha[0];
+        $("#num_cases").html(casos);
+        var deaths = linha[1];
+        $("#num_deaths").html(deaths);
+        //console.log(linha.length);
+        for(var i = 3; i < linha.length;){
+            //console.log(i);
+            var country = linha[i];
+            x.push(country);
+            var totalcases = linha[i + 1];
+            y.push(totalcases);
+            i += 8;
+        }
         });
-      }, 5000);
-      
-
-
-      google.charts.load('current', {
-        'packages':['geochart'],
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-      });
-      google.charts.setOnLoadCallback(drawRegionsMap);
-
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-          ['Country', 'Confirmed Cases'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 700],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700]
-        ]);
-
+        x = [];
+        y = [];
+        var data2 = [['Country', 'Confirmed Cases']];
+        for (i = 0; i < x.length; i++) {
+               data2[i + 1] = [x[i], y[i]];  
+        }
+        var data = google.visualization.arrayToDataTable(data2);
         var options = {
-            colorAxis: {colors: ['white', '#DC281E']},
-            backgroundColor: '#81d4fa',
-
+          colorAxis: {colors: ['white', '#DC281E']},
+          backgroundColor: '#81d4fa',
         };
-
         var chart = new google.visualization.GeoChart(document.getElementById('mapa'));
-
         chart.draw(data, options);
-      }
+    }
+   
     </script>
 
     
