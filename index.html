@@ -92,19 +92,13 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script type="text/javascript">
     var totalcases;
     var country;
-    
-    google.charts.load('current', {
-      'packages':['geochart'],
-      // Note: you will need to get a mapsApiKey for your project.
-      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-      'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-    });
-    google.charts.setOnLoadCallback(drawRegionsMap);
-    function drawRegionsMap() {
-        $.get('output/result.txt', function(data) {
+    var x = [];
+    var y = [];
+    $.get('output/result.txt', function(data) {
         //$('#num_cases').html(data);
         //console.log(data);
         linha = data.split("\n");
@@ -118,19 +112,27 @@
             var country = linha[i];
             x.push(country);
             var totalcases = linha[i + 1];
+            totalcases = numeral(totalcases).value();
             y.push(totalcases);
             i += 8;
         }
         });
-        x = [];
-        y = [];
+    google.charts.load('current', {
+      'packages':['geochart'],
+      // Note: you will need to get a mapsApiKey for your project.
+      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+      'mapsApiKey': 'AIzaSyCdDaGaRubI0FY-qDnkj5ePj8iKrbPeC6c'
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+    function drawRegionsMap() {
         var data2 = [['Country', 'Confirmed Cases']];
         for (i = 0; i < x.length; i++) {
                data2[i + 1] = [x[i], y[i]];  
         }
+        
         var data = google.visualization.arrayToDataTable(data2);
         var options = {
-          colorAxis: {colors: ['white', '#DC281E']},
+          colorAxis: {colors: ['#ef473a', '#cb2d3e']},
           backgroundColor: '#81d4fa',
         };
         var chart = new google.visualization.GeoChart(document.getElementById('mapa'));

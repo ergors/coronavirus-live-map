@@ -1,25 +1,25 @@
-60,414
-1,370
-6,295
+65,247
+1,491
+7,099
 China
-59,826
-+15,424
-1,367
-+255
-6,210
-8,024
+64,658
++4,854
+1,488
++123
+7,014
+10,584
 Asia
 Japan
-251
-+49
+252
++50
 1
 +1
 10
-4
+5
 Asia
 Singapore
 58
-+11
++8
 
 
 15
@@ -27,7 +27,7 @@ Singapore
 Asia
 Hong Kong
 53
-+4
++3
 1
 
 1
@@ -115,7 +115,7 @@ Macao
 Asia
 U.K.
 9
-+1
+
 
 
 1
@@ -177,6 +177,14 @@ Spain
 
 
 Europe
+Sweden
+1
+
+
+
+
+
+Europe
 Nepal
 1
 
@@ -210,14 +218,6 @@ Cambodia
 
 Asia
 Belgium
-1
-
-
-
-
-
-Europe
-Sweden
 1
 
 
