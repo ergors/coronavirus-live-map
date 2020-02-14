@@ -33,7 +33,6 @@
             box-sizing: border-box;
         }
 
-        /* Float four columns side by side */
         .column {
           position: relative;
           left: 40%;
@@ -41,7 +40,6 @@
           width: 10%;
         }
         
-        /* Responsive columns */
         @media screen and (max-width: 600px) {
           .column {
             width: 100%;
@@ -50,7 +48,6 @@
           }
         }
         
-        /* Style the counter cards */
         .card {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           text-align: center;
@@ -99,16 +96,12 @@
     var x = [];
     var y = [];
     $.get('output/result.txt', function(data) {
-        //$('#num_cases').html(data);
-        //console.log(data);
         linha = data.split("\n");
         var casos = linha[0];
         $("#num_cases").html(casos);
         var deaths = linha[1];
         $("#num_deaths").html(deaths);
-        //console.log(linha.length);
         for(var i = 3; i < linha.length;){
-            //console.log(i);
             var country = linha[i];
             x.push(country);
             var totalcases = linha[i + 1];
